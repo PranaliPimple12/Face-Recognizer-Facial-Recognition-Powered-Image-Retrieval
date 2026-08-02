@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Face Snapper | Login</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at top left, #1c1b3a, #0b0b1e);
+  color: white;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+/* LEFT SECTION */
+.left {
+  width: 50%;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.left p {
+  font-size: 18px;
+  color: #cfcfe6;
+  max-width: 500px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* RIGHT SECTION */
+.right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 380px;
+  padding: 40px;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+  color: black;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.card img {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  margin: 10px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.card p {
+  margin: 6px 0 20px;
+  color: #555;
+  font-size: 16px;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  background: #565489;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.google-btn:hover {
+  background: radial-gradient(circle at top left, #1c1b3a, #0b0b1e);
+}
+
+.secure {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LEFT INFO -->
+  <div class="left">
+    <h1>Welcome to<br>Face Snapper</h1>
+    
+    <p>
+      Face Snapper is photo sharing platform that helps users to
+      find their event photos using face recognition technology.
+
+      Upload event folders, search by event name, scan your face, 
+      and instantly get only your matched photos.
+    </p>
+    <p>
+      Secure login, smart search, and privacy-focused photo access all in one place.
+    </p>
+  </div>
+
+  <!-- RIGHT LOGIN CARD -->
+  <div class="right">
+    <div class="card">
+      <img src="images/logo.png" alt="Logo">
+      <h2>Sign in to continue</h2>
+      <p>Access your photos securely</p>
+
+      <button class="google-btn" onclick="googleLogin()">
+        Sign in with Google
+      </button>
+
+      <div class="secure">
+        Secure by Firebase Authentication
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyC3vKsAQO0OLBAPSGmNI7jGEDW-GdBnpAU",
+  authDomain: "kwikpic-clone-fd852.firebaseapp.com",
+  projectId: "kwikpic-clone-fd852"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
+
+function googleLogin() {
+  auth.signInWithPopup(provider)
+    .then(() => {
+      window.location.href = "dashboard.html";
+    })
+    .catch(err => alert(err.message));
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head><title>Search | KwikPic</title></head>
+<body style="margin:0;font-family:'Segoe UI';background:#f5f5f5;">
+
+<!-- HEADER -->
+<header style="position:fixed;top:0;width:100%;height:64px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 25px;">
+<img src="images/logo.png" style="height:40px;">
+<nav>
+<a href="dashboard.html" style="margin:0 15px;text-decoration:none;color:#333;">Dashboard</a>
+<a href="upload.html" style="margin:0 15px;text-decoration:none;color:#333;">Upload</a>
+<a href="search.html" style="margin:0 15px;color:#000;font-weight:bold;border-bottom:2px solid #000;text-decoration:none;">Search</a>
+<a href="aboutus.html" style="margin:0 15px;text-decoration:none;color:#333;">About Us</a>
+</nav>
+  <div style="position:relative;padding-right:50px;">
+    <img id="profileImg" onclick="toggleMenu()" style="
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      cursor:pointer;
+    ">
+
+    <div id="menu" style="
+      display:none;
+      position:absolute;
+      right:0;
+      top:55px;
+      width:200px;
+      background:#fff;
+      border-radius:8px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+      padding:12px;
+    ">
+      <p id="manuname" style="margin:6px 0;font-size:14px;"></p>
+      <p id="email" style="margin:6px 0;font-size:14px;"></p>
+      <button onclick="logout()" style="
+        width:100%;
+        padding:8px;
+        border:none;
+        background:#e53935;
+        color:white;
+        border-radius:6px;
+        cursor:pointer;
+      ">Sign out</button>
+    </div>
+  </div>
+</header>
+
+<div style="margin-top:100px;margin:100px 50px;background:white;padding:30px;border-radius:12px;">
+<h2>Search Your Photos</h2>
+<p>Logged in as <b id="checkname"></b></p>
+<br>
+<input 
+  type="text" 
+  id="searchEvent"
+  placeholder="Enter event name"
+  style="width:100%;padding:10px;margin-bottom:15px;"
+>
+
+<button 
+  onclick="searchEvent()"
+  style="padding:10px 18px;background:#2f5d6e;color:white;border:none;border-radius:8px;">
+Search
+</button>
+
+<div 
+  id="searchResult"
+  style="margin-top:30px;display:flex;gap:20px;flex-wrap:wrap;">
+</div>
+
+</div>
+
+<footer style="
+  background:#f9f9f9;
+  color:#333;
+  padding:50px 8%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:flex-start;
+  font-family:'Segoe UI',Arial,sans-serif;
+  border-top:1px solid #ddd;
+">
+  <!-- Logo + About -->
+  <div style="flex:1 1 260px;min-width:230px;margin-bottom:25px;">
+    <img src='images/logo.png' alt='Face Snapper Logo' style='height:55px;margin-bottom:15px;'>
+    <p style="color:#555;line-height:1.7;font-size:14px;">
+      <b>Face Snapper</b> lets you easily upload event photos, search them with face recognition,
+      and instantly find your memories — fast, secure, and personalized.
+    </p>
+  </div>
+
+  <!-- Company Info -->
+  <div style="flex:1 1 180px;min-width:170px;margin-bottom:25px;">
+    <h3 style="color:#2f5d6e;margin-bottom:12px;font-size:16px;">Company</h3>
+    <p style="margin:5px 0;">Pranali Pimple</p>
+    <p style="margin:5px 0;">Navi Mumbai, India</p>
+    <p style="margin:5px 0;">📧 support@facesnapper.com</p>
+    <p style="margin:5px 0;">📞 +91 9876543210</p>
+  </div>
+
+  <!-- Quick Links -->
+  <div style="flex:1 1 160px;min-width:150px;margin-bottom:25px;">
+    <h3 style="color:#2f5d6e;margin-bottom:12px;font-size:16px;">Quick Links</h3>
+    <a href="aboutus.html" style="display:block;color:#555;text-decoration:none;margin:4px 0;">About Us</a>
+    <a href="faq.html" style="display:block;color:#555;text-decoration:none;margin:4px 0;">FAQ</a>
+    <a href="privacy.html" style="display:block;color:#555;text-decoration:none;margin:4px 0;">Privacy Policy</a>
+    <a href="terms.html" style="display:block;color:#555;text-decoration:none;margin:4px 0;">Terms & Conditions</a>
+  </div>
+
+  <!-- Social Media -->
+  <div style="flex:1 1 160px;min-width:150px;margin-bottom:25px;">
+    <h3 style="color:#2f5d6e;margin-bottom:12px;font-size:16px;">Follow Us</h3>
+    <a href="#" style="display:flex;align-items:center;color:#555;text-decoration:none;margin:6px 0;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="18" style="margin-right:8px;"> Facebook
+    </a>
+    <a href="#" style="display:flex;align-items:center;color:#555;text-decoration:none;margin:6px 0;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" width="18" style="margin-right:8px;"> LinkedIn
+    </a>
+    <a href="#" style="display:flex;align-items:center;color:#555;text-decoration:none;margin:6px 0;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" width="18" style="margin-right:8px;"> Instagram
+    </a>
+  </div>
+</footer>
+
+<!-- Bottom Bar -->
+<div style="
+  background:#eaeaea;
+  color:#555;
+  text-align:center;
+  padding:12px 10px;
+  font-size:13px;
+  border-top:1px solid #ddd;
+">
+  © 2026 <b>Face Snapper</b> — Built with by Pranali Pimple. All rights reserved.
+</div>
+<script src="https://unpkg.com/@supabase/supabase-js@2.39.4/dist/umd/supabase.js"></script>
+<script>
+  const SUPABASE_URL = "https://zqozcledqhbqetpitpbr.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpxb3pjbGVkcWhicWV0cGl0cGJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3ODIxOTUsImV4cCI6MjA4MzM1ODE5NX0.rqd-JEYURQ9VUcRlS9w99ZfMGKmce0jWtE85RJ-HexQ";
+
+  const sb = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+  );
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyC3vKsAQO0OLBAPSGmNI7jGEDW-GdBnpAU",
+  authDomain: "kwikpic-clone-fd852.firebaseapp.com",
+  projectId: "kwikpic-clone-fd852"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+auth.onAuthStateChanged(user => {
+  if (!user) {
+    window.location.href = "login.html";
+  } else {
+    document.getElementById("manuname").innerText = user.displayName;
+   document.getElementById("checkname").innerText = user.displayName;
+document.getElementById("email").innerText = user.email;
+document.getElementById("profileImg").src = user.photoURL;
+
+  }
+});
+
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function logout() {
+  auth.signOut().then(() => {
+    window.location.href = "login.html";
+  });
+}
+
+firebase.auth().onAuthStateChanged(user=>{
+  if(!user){location.href="login.html";}
+  else{
+    email.innerText=user.email;
+    profileImg.src=user.photoURL;
+  }
+});
+</script>
+<script>
+async function searchEvent() {
+  const eventName = document.getElementById("searchEvent").value.trim();
+  const resultBox = document.getElementById("searchResult");
+
+  resultBox.innerHTML = "";
+
+  if (!eventName) {
+    resultBox.innerHTML = "<p>Please enter an event name</p>";
+    return;
+  }
+
+  const { data, error } = await sb
+    .from("uploads")
+    .select("*")
+    .ilike("event_name", `%${eventName}%`);
+
+  if (error) {
+    console.error(error);
+    resultBox.innerHTML = "<p>Error searching event</p>";
+    return;
+  }
+
+  if (data.length === 0) {
+    resultBox.innerHTML = "<p>No such event uploaded</p>";
+    return;
+  }
+
+  data.forEach(item => {
+    const card = document.createElement("div");
+    card.style = `
+      width:260px;
+      border:1px solid #e0e0e0;
+      padding:18px;
+      border-radius:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      background:#fff;
+    `;
+
+    card.innerHTML = `
+  <div>
+    <div style="font-size:18px;font-weight:600;color:#111;">
+      ${item.event_name}
+    </div>
+    <div style="font-size:13px;color:#777;margin-top:6px;">
+      ${item.upload_date}
+    </div>
+    <div style="font-size:13px;color:#555;margin-top:4px;">
+      Uploaded by: <b>${item.user_name}</b>
+    </div>
+  </div>
+
+      <button 
+        onclick='goToFaceDetection(${JSON.stringify(item)})'
+        style="
+          padding:8px 14px;
+          background:#000;
+          color:#fff;
+          border:none;
+          border-radius:8px;
+          cursor:pointer;
+        ">
+        View
+      </button>
+      
+    `;
+
+    resultBox.appendChild(card);
+  });
+}
+
+function goToFaceDetection(eventData) {
+  localStorage.setItem("selectedEvent", JSON.stringify(eventData));
+  window.location.href = "face_detection.html";
+}
+
+
+function viewPhotos(photoUrls) {
+  const html = photoUrls
+    .map(url => `<img src="${url}" width="150" style="margin:5px;">`)
+    .join("");
+
+  const win = window.open("", "_blank");
+  win.document.write(html);
+}
+</script>
+
+</body>
+</html>
